@@ -26,6 +26,7 @@ export class AuthService{
         .setProject(conf.appwriteProjectId)
         this.account = new Account(this.client)
     }
+    // signup
     async createAccount({email, password, name}){
         // Refer Appwrite documentation and look for signup snippet for reference
         try{
@@ -33,6 +34,7 @@ export class AuthService{
             if (userAccount){
                 // According to our flow if user account is created successfully -> they are logged in directly
                 // call another method
+                return this.login({email, password});
             }
             else{
                 return userAccount;
@@ -41,7 +43,7 @@ export class AuthService{
             throw error;
         }
     }
-
+    // login
     async login({email, password}){
         // Refer Appwrite documentation and look for login snippet for reference
         try {
@@ -50,6 +52,28 @@ export class AuthService{
             
         }
     }
+
+    // If we directly land on homepage, we need to know if we are logged in or not
+    async getCurrentUser(){
+        try {
+            return await this.account.get()
+        } catch (error) {
+            // throw error;
+            console.log("Appwrite service :: getCurrentUser :: error", error)
+        }
+
+        return null; // if return in try block fails
+    }
+
+    // logout -> Delete session
+    async logout(){
+        try {
+            await this.account.deleteSessions();
+        } catch (error) {
+            console.log("Appwrite service :: getCurrentUser :: error", error);
+        }
+    }
+
 }
 
 const authService = new AuthService();
