@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 
+/**
+ * Steps : 
+ * Check if user is logged in or not
+ * Show a loading component unless there is a user
+ * 
+ */
+useEffect(() => {
+    
+}, []);
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <h1>Hello!</h1>
