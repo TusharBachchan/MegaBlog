@@ -20,12 +20,14 @@ import { Client, Account, ID } from "appwrite";
 export class AuthService{
     client = new Client();
     account;
+    
     constructor(){
         this.client
         .setEndpoint(conf.appwriteUrl)
         .setProject(conf.appwriteProjectId)
         this.account = new Account(this.client)
     }
+
     // signup
     async createAccount({email, password, name}){
         // Refer Appwrite documentation and look for signup snippet for reference
