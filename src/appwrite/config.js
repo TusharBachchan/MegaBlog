@@ -81,7 +81,7 @@ export class Service {
     async deleteFile(fileId) {
         try {
             // slug is used as document id
-            await this.bucket.createFile(conf.appwriteBucketId, ID.unique(), file);
+            await this.bucket.createFile(conf.appwriteBucketId, fileId);
             return true;
         } catch (error) {
             console.log("Appwrite service :: deleteFile :: error", error);
