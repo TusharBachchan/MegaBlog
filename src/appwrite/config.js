@@ -88,7 +88,7 @@ export class Service {
             return false; // if no post is found
         }
     }
-    // getFilePreview
+    // getFilePreview -> returns url of preview image
     getFilePreview(fileId){
         return this.bucket.getFilePreview(conf.appwriteBucketId, fileId)
     }

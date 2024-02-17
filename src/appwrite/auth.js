@@ -46,6 +46,14 @@ export class AuthService{
         }
     }
     // login
+    /**
+ * Logs in a user with the provided email and password.
+ * @param {Object} credentials - The user's login credentials.
+ * @param {string} credentials.email - The user's email address.
+ * @param {string} credentials.password - The user's password.
+ * @returns {Promise} - A promise that resolves with the session information if the login is successful i.e it returns a session.
+ * @throws {Error} - If an error occurs during the login process.
+ */
     async login({email, password}){
         // Refer Appwrite documentation and look for login snippet for reference
         try {
